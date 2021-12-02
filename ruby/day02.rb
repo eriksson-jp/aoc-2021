@@ -1054,16 +1054,7 @@ end
 def perform_movement(submarine, input)
 	input.each { | line |
 		command = parse_command(line)
-		case command[0]
-			when "forward"
-				submarine.forward(command[1].to_i)
-			when "down"
-				submarine.down(command[1].to_i)
-			when "up"
-				submarine.up(command[1].to_i)
-			else
-				raise "Unknown command #{command[0]}"
-		end
+		submarine.send(command[0], command[1].to_i)
 	}
 end
 
