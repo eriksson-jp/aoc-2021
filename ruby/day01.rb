@@ -2001,27 +2001,27 @@ input = """141
 
 
 def task1(input)
-	counter = 0
-	input.each_with_index { | no, index|
-		if index > 0
-			counter += 1 if (no.to_i > input[index - 1].to_i)
-		end
-	}
-	counter
+  counter = 0
+  input.each_with_index { | no, index|
+    if index > 0
+      counter += 1 if (no.to_i > input[index - 1].to_i)
+    end
+  }
+  counter
 end
 
 def sum_surrounding(input, index)
-	input[index - 1].to_i + input[index].to_i + input[index + 1].to_i
+  input[index - 1].to_i + input[index].to_i + input[index + 1].to_i
 end
 
 def task2(input)
-	counter = 0
-	input.each_with_index { | no, index |
-		if index > 1 and index < input.length - 1
-			counter += 1 if sum_surrounding(input, index) > sum_surrounding(input, index - 1)
-		end
-	}
-	counter
+  counter = 0
+  input.each_with_index { | no, index |
+    if index > 1 and index < input.length - 1
+      counter += 1 if sum_surrounding(input, index) > sum_surrounding(input, index - 1)
+    end
+  }
+  counter
 end
 
 puts "DAY 1.1: #{task1(input)}"

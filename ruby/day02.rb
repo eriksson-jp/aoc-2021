@@ -1000,74 +1000,74 @@ up 5
 forward 4""".split("\n")
 
 class Submarine
-	def initialize(horizontal_pos, depth)
-		@horizontal_pos = horizontal_pos
-		@depth = depth
-	end
-	
-	def forward(amount)
-		@horizontal_pos += amount
-	end
-	
-	def down(amount)
-		@depth += amount
-	end
-	
-	def up(amount)
-		@depth -= amount
-	end
-	
-	def calculate()
-		@horizontal_pos * @depth
-	end
+  def initialize(horizontal_pos, depth)
+    @horizontal_pos = horizontal_pos
+    @depth = depth
+  end
+  
+  def forward(amount)
+    @horizontal_pos += amount
+  end
+  
+  def down(amount)
+    @depth += amount
+  end
+  
+  def up(amount)
+    @depth -= amount
+  end
+  
+  def calculate()
+    @horizontal_pos * @depth
+  end
 end
 
 class AimingSubmarine
-	def initialize(horizontal_pos, depth, aim)
-		@horizontal_pos = horizontal_pos
-		@depth = depth
-		@aim = aim
-	end
-	
-	def forward(amount)
-		@horizontal_pos += amount
-		@depth += amount * @aim
-	end
-	
-	def down(amount)
-		@aim += amount
-	end
-	
-	def up(amount)
-		@aim -= amount
-	end
-	
-	def calculate()
-		@horizontal_pos * @depth
-	end
+  def initialize(horizontal_pos, depth, aim)
+    @horizontal_pos = horizontal_pos
+    @depth = depth
+    @aim = aim
+  end
+  
+  def forward(amount)
+    @horizontal_pos += amount
+    @depth += amount * @aim
+  end
+  
+  def down(amount)
+    @aim += amount
+  end
+  
+  def up(amount)
+    @aim -= amount
+  end
+  
+  def calculate()
+    @horizontal_pos * @depth
+  end
 end
 
 def parse_command(line)
-	line.split(" ")
+  line.split(" ")
 end
 
 def perform_movement(submarine, input)
-	input.each { | line |
-		command = parse_command(line)
-		submarine.send(command[0], command[1].to_i)
-	}
+  input.each { | line |
+    command = parse_command(line)
+    submarine.send(command[0], command[1].to_i)
+  }
 end
 
 def taskOne(input)
-	submarine = Submarine.new(0, 0)
-	perform_movement(submarine, input)
-	submarine.calculate()
+  submarine = Submarine.new(0, 0)
+  perform_movement(submarine, input)
+  submarine.calculate()
 end
 
 def taskTwo(input)
-	submarine = AimingSubmarine.new(0, 0, 0)
-	perform_movement(submarine, input)
-	submarine.calculate
+  submarine = AimingSubmarine.new(0, 0, 0)
+  perform_movement(submarine, input)
+  submarine.calculate
 end
 
 puts "DAY 2.1: #{taskOne(input)}"

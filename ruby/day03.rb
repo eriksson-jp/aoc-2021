@@ -1013,95 +1013,95 @@ input = """011010010110
 011010111110""".split("\n")
 
 def gamma(input)
-	length = input[0].size
-	result = ""
-	(0...length).each { | index |
-		s = ""
-		input.each { | line |
-			s << line[index]
-		}
-		if (s.count("0") > s.count("1"))
-			result << "0"
-		else
-			result << "1"
-		end
-		
-	}
-	result
+  length = input[0].size
+  result = ""
+  (0...length).each { | index |
+    s = ""
+    input.each { | line |
+      s << line[index]
+    }
+    if (s.count("0") > s.count("1"))
+      result << "0"
+    else
+      result << "1"
+    end
+    
+  }
+  result
 end
 
 def epsilon(gamma)
-	result = ""
-	gamma.chars.each { | bit | 
-		if (bit == "0")
-			result << "1"
-		else
-			result << "0"
-		end
-	}
-	result
+  result = ""
+  gamma.chars.each { | bit | 
+    if (bit == "0")
+      result << "1"
+    else
+      result << "0"
+    end
+  }
+  result
 end
 
 def oxygen_generator_rating(input)
-	length = input[0].size
-	left = input
-	position = 0
-	while(left.size > 1 && position < length)
-		result = ""
-		(0...length).each { | index |
-			s = ""
-			left.each { | line |
-				s << line[index]
-			}
-			if (s.count("0") > s.count("1"))
-				result << "0"
-			else
-				result << "1"
-			end
-		
-		}
-		left = left.select { |line| line[position] == result[position] }
-		position += 1
-	end
-	raise "unable to find" if left.size != 1
-	left[0].to_i(2)
+  length = input[0].size
+  left = input
+  position = 0
+  while(left.size > 1 && position < length)
+    result = ""
+    (0...length).each { | index |
+      s = ""
+      left.each { | line |
+        s << line[index]
+      }
+      if (s.count("0") > s.count("1"))
+        result << "0"
+      else
+        result << "1"
+      end
+    
+    }
+    left = left.select { |line| line[position] == result[position] }
+    position += 1
+  end
+  raise "unable to find" if left.size != 1
+  left[0].to_i(2)
 end
 
 def co2_scrubber_rating(input)
-	length = input[0].size
-	left = input
-	position = 0
-	while(left.size > 1 && position < length)
-		result = ""
-		(0...length).each { | index |
-			s = ""
-			left.each { | line |
-				s << line[index]
-			}
-			if (s.count("0") <= s.count("1"))
-				result << "0"
-			else
-				result << "1"
-			end
-		
-		}
-		left = left.select { |line| line[position] == result[position] }
-		position += 1
-	end
-	raise "unable to find" if left.size != 1
-	left[0].to_i(2)
+  length = input[0].size
+  left = input
+  position = 0
+  while(left.size > 1 && position < length)
+    result = ""
+    (0...length).each { | index |
+      s = ""
+      left.each { | line |
+        s << line[index]
+      }
+      if (s.count("0") <= s.count("1"))
+        result << "0"
+      else
+        result << "1"
+      end
+    
+    }
+    left = left.select { |line| line[position] == result[position] }
+    position += 1
+  end
+  raise "unable to find" if left.size != 1
+  left[0].to_i(2)
 end
 
 def taskOne(input)
-	g = gamma(input)
-	e = epsilon(g)
-	g.to_i(2) * e.to_i(2)
+  g = gamma(input)
+  e = epsilon(g)
+  g.to_i(2) * e.to_i(2)
 end
 
 def taskTwo(input)
-	o = oxygen_generator_rating(input)
-	c = co2_scrubber_rating(input)
-	o * c
+  o = oxygen_generator_rating(input)
+  c = co2_scrubber_rating(input)
+  o * c
 end
 
 puts "DAY 3.1: #{taskOne(input)}"
