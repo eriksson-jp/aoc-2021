@@ -634,9 +634,9 @@ class BoardValue
   end
   
   def mark_if_matching(ball)
-  	if (@value == ball)
+    if (@value == ball)
   	  @marked = true
-  	end
+    end
   end
   
   def to_s
@@ -750,5 +750,5 @@ def taskTwo(input)
   winner.calculate_score(ball)
 end
 
-#puts "DAY 4.1: #{taskOne(input)}"
+puts "DAY 4.1: #{taskOne(input)}"
 puts "DAY 4.2: #{taskTwo(input)}"
